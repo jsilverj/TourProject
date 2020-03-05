@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+<!-- 
+ log4j는 Apache에서 제공하는 오픈소스 라이브러리로 자바 기반의 로깅 유틸리티이다. 
+ spring 프로젝트에 기본적으로 들어있는 경우가 많다. pom.xml에서 확인이 가능하며, src/main/resources/log4j.xml 경로에 파일이 있다(없으면 추가).
+ system.out.println("")의 경우 무분별한 사용으로 인해 성능 저하가 일어날 수 있으며 일일이 찾아 관리해아 하는 단점이 있다. 
+ log4j를 사용하면 환경설정을 이용해 선택적인 로그를 남길 수 있고 성능에 큰 문제가 생기지 않는다.
+-->
+
+	<!-- Appenders는 log 출력 방식에 대한 정의로, 콘솔에 출력할 것인지 DB에 저장할 것인지 등을 설정할 수 있음 -->
+	
+	<!-- FileAppender: 로그 메시지를 지정된 파일에 남길 수 있음 -->
+	<appender name="fileOut" class="org.apache.log4j.FileAppender"> 
+	<!-- log 파일 생성 위치 -->
+	<param name="file" value="C:/eclipse/workspace02/logs/dailyout.log"/>	
+	<!-- true: 로그를 작성할 때 마다 추가적으로 쌓는다. false: 파일을 덮어 씌운다. -->
+	<param name="Append" value="true"/>
+	<!-- 파일 내용 출력 형식 -->
+	<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] [%p] %m %n" />
+	</layout>
+	</appender>
+
+	<!-- ConsoleAppender: system.out.println을 대체 -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+	 
+	<!-- Application Loggers -->
+	<!-- 특정 패키지 출력 설정. additivity="false"로 설정해두면 각 logger에서 설정하지 않은 log에 대해서만 root가 처리한다.-->
+	<logger name="com.tour.project" additivity="false">
+		<!-- log 출력 레벨. FATAL, ERROR, WARN, INFO, DEBUG, TRACE 6단계로 이루어져 있다. 기준 레벨 보다 높은 레벨의 메시지가 모두 출력된다. -->
+		<level value="debug" /> 
+		<!--appender-ref를 통해 해당 appender 참조 -->
+		<appender-ref ref="fileOut"/>
+	</logger>
+
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger>
+
+	<!-- Root Logger -->
+	<!-- 따로 설정하지 않아도 기본적으로 출력되는 default 로그. root가 있는데 다른 로그 출력방식을 지정할 경우 두 번 출력된다. -->
+	<root>
+		<priority value="debug" /> 
+		<appender-ref ref="console" />
+	</root>
+	
+</log4j:configuration>

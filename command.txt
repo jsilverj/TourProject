@@ -1,0 +1,23 @@
+windows > preferences > general > keys > 커맨드 키 원하는대로 변경
+
+ ctrl+i > 소스 정렬
+ ctrl+x > 한 줄 삭제
+ 
+ 
+ 
+ 
+ 깃허브 연동
+ 1. 깃허브에 repository 생성
+ 2. windows > perspective > Open Perspective > other
+ 3. Git 선택
+ 4. clone a Git repository 선택
+ 5. 생성해 둔 repository 주소 복사해서 입력(하면 위에 3줄 알아서 채워짐)
+ 6. port는 비워두고 세번째 칸에 깃허브 아이디(이메일 형식)와 비밀번호 입력 후 next
+ 7. 다음 페이지는 생성된게 없기 때문에 아무 것도 안 뜰 것임. next 선택
+ 8. 경로 확인 후 finish 선택
+ 9. 프로젝트 오른쪽 마우스 > import projects 
+ 10. 해당 프로젝트 체크 후 finish
+ 11. 필요에 따라 commit 하면 됨
+ 
+ 9번이 안되면 프로젝트 오른쪽 마우스 > team > share project > use~~누르고 create repository 해서 프로젝트 체크   
+ 
