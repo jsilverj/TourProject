@@ -21,3 +21,5 @@ windows > preferences > general > keys > 커맨드 키 원하는대로 변경
  
  9번이 안되면 프로젝트 오른쪽 마우스 > team > share project > use~~누르고 create repository 해서 프로젝트 체크   
  
+ 암튼 이래 저래 해서 commit 누르고 히스토리 입력 후 commit and push 하면 깃허브에 commit이 된다
+ 
